@@ -157,11 +157,10 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   signIn.addEventListener("click", () => {
-
-    setTimeout(() => {
-      document.querySelector(".container").style.display = "flex";
-      document.querySelector(".second-container").style.display = "none";
-    }, 300);
+    document.querySelector("#incorrectUser").style.display = "none";
+    document.querySelector("#localNull").style.display = "none";
+    document.querySelector(".container").style.display = "flex";
+    document.querySelector(".second-container").style.display = "none";
   });
 
   sigInbutton.addEventListener("click", (e) => {
@@ -172,34 +171,34 @@ window.addEventListener("DOMContentLoaded", () => {
       userPassword = document.getElementById("password2"),
       fullName = document.querySelector(".full-name"),
       profileEmail = document.querySelector(".profile-email");
-    
-      if(authData.length !== 0){
-        const data = storedData.find((data) => {
-          return data.email === userEmail.value && data.pw === userPassword.value;
-        });
-    
-        if (data) {
-          sigInbutton.style.backgroundColor = "#28a745";
-          sigInbutton.textContent = "Successful";
-    
-          setTimeout(() => {
-            document.querySelector(".wrapper").style.display = "flex";
-            document.querySelector(".second-container").style.display = "none";
-            fullName.innerHTML = `${data.firstName} ${data.lastName}`;
-            profileEmail.innerHTML = `${data.email}`;
-            document.querySelector("#localNull").style.display = "none";
-            document.querySelector("#incorrectUser").style.display = "none";
-          }, 1200);
-        } else {
-          document.querySelector("#incorrectUser").style.display = "block";
-          document.querySelector("#localNull").style.display = "none";
-        }
-      }
-      else{
+
+    if (localStorage.getItem('auth-data') !== null) {
+      const data = storedData.find((data) => {
+        return data.email === userEmail.value && data.pw === userPassword.value;
+      });
+
+      if (data) {
+        sigInbutton.style.backgroundColor = "#28a745";
+        sigInbutton.textContent = "Successful";
         document.querySelector("#incorrectUser").style.display = "none";
-        document.querySelector("#localNull").style.display = "block";
+        document.querySelector("#localNull").style.display = "none";
+        setTimeout(() => {
+          document.querySelector(".wrapper").style.display = "flex";
+          document.querySelector(".second-container").style.display = "none";
+          fullName.innerHTML = `${data.firstName} ${data.lastName}`;
+          profileEmail.innerHTML = `${data.email}`;
+          document.querySelector("#localNull").style.display = "none";
+          document.querySelector("#incorrectUser").style.display = "none";
+        }, 1200);
+      } else {
+        document.querySelector("#incorrectUser").style.display = "block";
+        document.querySelector("#localNull").style.display = "none";
       }
-    
+    } else {
+      document.querySelector("#incorrectUser").style.display = "none";
+      document.querySelector("#localNull").style.display = "block";
+    }
+
   });
 
   profileExitBtn.addEventListener("click", () => {
