@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
+    <title>Sign In</title>
+</head>
+
+<body>
+    <!-- REGISTRATION FORM -->
+    <div class="container">
+        <h1 class="title">Registration form</h1>
+        <form class="form">
+            <div class="form-item">
+                <p class="incorrect-input" id="incorrect-firstName">
+                    Please provide a valid First Name
+                </p>
+                <input type="text" class="form-input" id="firstName" required />
+                <label class="form-label">First Name</label>
+                <img data-images src="img/checkmark.svg" alt="" id="firstName-good" />
+                <img data-images src="img/close.svg" alt="" id="firstName-bad" />
+            </div>
+            <div class="form-item">
+                <p class="incorrect-input" id="incorrect-lastName">
+                    Please provide a valid Last Name
+                </p>
+                <input type="text" class="form-input" id="lastName" required />
+                <label class="form-label">Last Name</label>
+                <img data-images src="img/checkmark.svg" alt="" id="lastName-good" />
+                <img data-images src="img/close.svg" alt="" id="lastName-bad" />
+            </div>
+            <div class="form-item">
+                <p class="incorrect-input" id="incorrect-email">
+                    Please provide a valid Email
+                </p>
+                <input type="text" class="form-input" id="email" required />
+                <label class="form-label">Email</label>
+                <img data-images src="img/checkmark.svg" alt="" id="email-good" />
+                <img data-images src="img/close.svg" alt="" id="email-bad" />
+            </div>
+            <div class="form-item">
+                <p class="incorrect-input" id="incorrect-password">
+                    Please provide a valid Password
+                </p>
+                <input type="password" class="form-input" id="password" required />
+                <label class="form-label">Password</label>
+                <img data-images src="img/checkmark.svg" alt="" id="password-good" />
+                <img data-images src="img/close.svg" alt="" id="password-bad" />
+            </div>
+                <div class="form-button" id="btn-register">Register</div>
+            <div class="log-in">Sign In now</div>
+        </form>
+    </div>
+
+    <!-- LOG IN FORM -->
+    <div class="container second-container">
+        <h1 class="title">Please Sign In</h1>
+        <form class="form">
+            <div class="form-item">
+                <p class="incorrect-input" id="localNull">
+                    LocalStorage is empty
+                </p>
+                <p class="incorrect-input" id="incorrectUser">
+                    Incorrect email or password
+                </p>
+                <input type="text" class="form-input" id="email2" required />
+                <label class="form-label">Email</label>
+                <img data-images src="img/checkmark.svg" alt="" id="email-good" />
+                <img data-images src="img/close.svg" alt="" id="email-bad" />
+            </div>
+            <div class="form-item">
+                <input type="password" class="form-input" id="password2" required />
+                <label class="form-label">Password</label>
+                <img data-images src="img/checkmark.svg" alt="" id="password-good" />
+                <img data-images src="img/close.svg" alt="" id="password-bad" />
+            </div>
+            <div class="form-button" id="btn-sign-in">Sign In</div>
+            <div class="sign-in">Sign Up now</div>
+        </form>
+    </div>
+
+    <!-- USER PROFILE -->
+
+    <div class="wrapper">
+        <div class="photo">
+            <img class="profile__icon" src="img/Salesman-512.png" alt="">
+        </div>
+        <div class="full-name"></div>
+        <div class="profile-email"></div>
+        <div class="specialty">Designer & Web Developing</div>
+        <div class="form-button" id="btn-exit">Sign Up</div>
+    </div>
+
+      <!-- MODAL REGISTRATION COMPLITE  -->
+  <div id="modal" class="myModal">
+    <div class="modal-content">
+      <div id="close" data-close>&times;</div>
+      <div class="modal-header">
+        <h2>Message</h2>
+      </div>
+      <div class="modal-body">
+        <img class="warning-icon" src="img/correct.svg" alt="">
+        <p class="message">Registration successful!</p>
+      </div>
+    </div>
+  </div>
+
+    <script src="script/main.js"></script>
+</body>
+
+</html>
