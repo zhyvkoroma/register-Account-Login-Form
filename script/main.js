@@ -9,6 +9,8 @@ window.addEventListener("DOMContentLoaded", () => {
     sigInbutton = document.querySelector("#btn-sign-in"),
     profileExitBtn = document.querySelector("#btn-exit");
 
+    const showOrHide = (selector, param = 'block') => document.querySelector(selector).style.display = param;
+
   const validationForm = () => {
     const state = {
       firstName: {
@@ -71,57 +73,57 @@ window.addEventListener("DOMContentLoaded", () => {
     if (state.firstName.valid) {
       firstName.classList.remove("red");
       firstName.classList.add("green");
-      document.querySelector("#firstName-good").style.display = "block";
-      document.querySelector("#firstName-bad").style.display = "none";
-      document.querySelector("#incorrect-firstName").style.display = "none";
+      showOrHide('#firstName-good');
+      showOrHide('#firstName-bad', 'none');
+      showOrHide('#incorrect-firstName', 'none');
     } else {
       firstName.classList.add("red");
       firstName.classList.remove("green");
-      document.querySelector("#firstName-bad").style.display = "block";
-      document.querySelector("#firstName-good").style.display = "none";
-      document.querySelector("#incorrect-firstName").style.display = "block";
+      showOrHide('#firstName-good', 'none');
+      showOrHide('#firstName-bad');
+      showOrHide('#incorrect-firstName');
     }
 
     if (state.lastName.valid) {
       lastName.classList.remove("red");
       lastName.classList.add("green");
-      document.querySelector("#lastName-good").style.display = "block";
-      document.querySelector("#lastName-bad").style.display = "none";
-      document.querySelector("#incorrect-lastName").style.display = "none";
+      showOrHide('#lastName-good');
+      showOrHide('#lastName-bad', 'none');
+      showOrHide('#incorrect-lastName', 'none');
     } else {
       lastName.classList.add("red");
       lastName.classList.remove("green");
-      document.querySelector("#lastName-bad").style.display = "block";
-      document.querySelector("#lastName-good").style.display = "none";
-      document.querySelector("#incorrect-lastName").style.display = "block";
+      showOrHide('#lastName-good', 'none');
+      showOrHide('#lastName-bad');
+      showOrHide('#incorrect-lastName');
     }
 
     if (state.email.valid) {
       email.classList.remove("red");
       email.classList.add("green");
-      document.querySelector("#email-good").style.display = "block";
-      document.querySelector("#email-bad").style.display = "none";
-      document.querySelector("#incorrect-email").style.display = "none";
+      showOrHide('#email-good');
+      showOrHide('#email-bad', 'none');
+      showOrHide('#incorrect-email', 'none');
     } else {
       email.classList.add("red");
       email.classList.remove("green");
-      document.querySelector("#email-bad").style.display = "block";
-      document.querySelector("#email-good").style.display = "none";
-      document.querySelector("#incorrect-email").style.display = "block";
+      showOrHide('#email-good', 'none');
+      showOrHide('#email-bad');
+      showOrHide('#incorrect-email');
     }
 
     if (state.password.valid) {
       password.classList.remove("red");
       password.classList.add("green");
-      document.querySelector("#password-good").style.display = "block";
-      document.querySelector("#password-bad").style.display = "none";
-      document.querySelector("#incorrect-password").style.display = "none";
+      showOrHide('#password-good');
+      showOrHide('#password-bad', 'none');
+      showOrHide('#incorrect-password', 'none');
     } else {
       password.classList.add("red");
       password.classList.remove("green");
-      document.querySelector("#password-bad").style.display = "block";
-      document.querySelector("#password-good").style.display = "none";
-      document.querySelector("#incorrect-password").style.display = "block";
+      showOrHide('#password-good', 'none');
+      showOrHide('#password-bad');
+      showOrHide('#incorrect-password');
     }
 
     if (
@@ -152,15 +154,15 @@ window.addEventListener("DOMContentLoaded", () => {
     logIn = document.querySelector(".log-in");
 
   logIn.addEventListener("click", () => {
-    document.querySelector(".container").style.display = "none";
-    document.querySelector(".second-container").style.display = "flex";
+    showOrHide('.container', 'none');
+    showOrHide('.second-container', 'flex');
   });
 
   signIn.addEventListener("click", () => {
-    document.querySelector("#incorrectUser").style.display = "none";
-    document.querySelector("#localNull").style.display = "none";
-    document.querySelector(".container").style.display = "flex";
-    document.querySelector(".second-container").style.display = "none";
+    showOrHide('#incorrectUser', 'none');
+    showOrHide('#localNull', 'none');
+    showOrHide('.container', 'flex');
+    showOrHide('.second-container', 'none');
   });
 
   sigInbutton.addEventListener("click", (e) => {
@@ -180,30 +182,30 @@ window.addEventListener("DOMContentLoaded", () => {
       if (data) {
         sigInbutton.style.backgroundColor = "#28a745";
         sigInbutton.textContent = "Successful";
-        document.querySelector("#incorrectUser").style.display = "none";
-        document.querySelector("#localNull").style.display = "none";
+        showOrHide('#incorrectUser', 'none');
+        showOrHide('#localNull', 'none');
         setTimeout(() => {
-          document.querySelector(".wrapper").style.display = "flex";
-          document.querySelector(".second-container").style.display = "none";
+          showOrHide('.wrapper', 'flex');
+          showOrHide('.second-container', 'none');
           fullName.innerHTML = `${data.firstName} ${data.lastName}`;
           profileEmail.innerHTML = `${data.email}`;
-          document.querySelector("#localNull").style.display = "none";
-          document.querySelector("#incorrectUser").style.display = "none";
+          showOrHide('#incorrectUser', 'none');
+          showOrHide('#localNull', 'none');
         }, 1200);
       } else {
-        document.querySelector("#incorrectUser").style.display = "block";
-        document.querySelector("#localNull").style.display = "none";
+        showOrHide('#incorrectUser', 'block');
+        showOrHide('#localNull', 'none');
       }
     } else {
-      document.querySelector("#incorrectUser").style.display = "none";
-      document.querySelector("#localNull").style.display = "block";
+      showOrHide('#incorrectUser', 'none');
+      showOrHide('#localNull', 'block');
     }
 
   });
 
   profileExitBtn.addEventListener("click", () => {
-    document.querySelector(".wrapper").style.display = "none";
-    document.querySelector(".second-container").style.display = "flex";
+    showOrHide('.wrapper', 'none');
+    showOrHide('.second-container', 'flex');
     document.querySelector("#email2").value = "";
     document.querySelector("#password2").value = "";
     sigInbutton.style.backgroundColor = "";
